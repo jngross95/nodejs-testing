@@ -24,7 +24,6 @@ function jsExtensions(extensions: string[]) {
   else {
     jsExtensions = `.{${extensions.join(',')}}`;
   }
-  console.log(`jsExtensions=${jsExtensions}`);
   return jsExtensions;
 }
 
