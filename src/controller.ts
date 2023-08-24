@@ -74,10 +74,11 @@ export class Controller {
     private readonly smStore: SourceMapStore,
     runner: TestRunner,
     include: string[],
-    exclude: string[]
+    exclude: string[],
+    extensionConfigs: ExtensionConfig[]
   ) {
     this.disposable.add(ctrl);
-    const extensions = runner.extensions.value.flatMap(x => x.extensions);
+    const extensions = extensionConfigs.flatMap(x => x.extensions);
     this.findPatterns = include.map((p) => {
       const pattern = path.posix.join(forceForwardSlashes(p), `**/*${jsExtensions(extensions)}`);
       return new vscode.RelativePattern(wf, pattern);
